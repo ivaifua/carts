@@ -15,7 +15,7 @@ resource "google_compute_instance" "javaserver" {
 
   boot_disk {
     initialize_params {
-      image = data.google_compute_image.javaserver.self_link
+      image = var.javaserver_boot_disk_source_image
     }
   }
 
@@ -37,9 +37,9 @@ resource "google_compute_instance" "mongoserver" {
 
   tags = var.mongoserver_instance_tags
 
-  boot_disk {
+    boot_disk {
     initialize_params {
-      image = data.google_compute_image.mongoserver.self_link
+      image = var.mongoserver_boot_disk_source_image
     }
   }
 
@@ -53,7 +53,7 @@ resource "google_compute_instance" "mongoserver" {
 }
 
 
-javaserver_startup_script_template = file("${path.module}/templates/javaserver_startup_script.sh.tpl")
+# javaserver_startup_script_template = file("${path.module}/templates/javaserver_startup_script.sh.tpl")
 
 resource "null_resource" "wait_for_javaserver_configuration" {
   provisioner "local-exec" {

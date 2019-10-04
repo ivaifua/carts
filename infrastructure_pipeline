@@ -33,8 +33,7 @@ pipeline {
                         case "apply":
                             sh 'terraform plan -out=plan'
                             sh 'terraform apply plan'
-                            build job: 'testJobCartsPipeline'
-                            break
+                                                        break
                         case "destroy":
                            sh 'terraform destroy -auto-approve'
                            break

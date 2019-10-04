@@ -25,7 +25,7 @@ stage('Deploy approval'){
 }
 node {
   stage('Deploy') {
-     sh 'ssh jenkins@10.128.0.3 sudo systemctl stop carts'
+     sh 'ssh jenkins@javamachine sudo systemctl stop carts'
      sh 'scp -oStrictHostKeyChecking=no target/carts.jar jenkins@10.128.0.3:/home/jenkins/carts/'
      sh 'ssh jenkins@10.128.0.3 sudo systemctl start carts'
  

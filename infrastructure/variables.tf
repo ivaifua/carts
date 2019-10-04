@@ -21,9 +21,13 @@ variable "javaserver_instance_machine_type" {
 
 variable "javaserver_boot_disk_source_image" {
   description = "The name of the disk image to use as the boot disk for the javaserver "
-  default     = "centos-cloud/centos-7"
+  default     = "/centos-cloud/global/images/centos-7-v20190905"
 }
 
+variable "mongoserver_boot_disk_source_image" {
+  description = "The name of the disk image to use as the boot disk for the javaserver "
+  default     = "/debian-cloud/global/images/debian-9-stretch-v20190916"
+}
 
 variable "javaserver_instance_zone" {
   description = "The zone to deploy the javaserver VM in"
@@ -78,4 +82,9 @@ variable "mongoserver_instance_access_cidrs" {
   type        = list(string)
   description = "CIDRs to allow to access javaserver over HTTP(s)"
   default     = ["0.0.0.0/0"]
+}
+
+variable "mongoserver_instance_zone" {
+  description = "The zone to deploy the javaserver VM in"
+  default     = "europe-west3-c"
 }

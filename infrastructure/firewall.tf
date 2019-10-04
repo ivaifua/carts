@@ -1,7 +1,7 @@
 resource "google_compute_firewall" "externalport-8081" {
   name    = "${var.javaserver_instance_name}-external-tcp-8081"
   project = var.project_id
-  network = var.jenkins_instance_network
+  network = var.javaserver_instance_network
 
   allow {
     protocol = "tcp"
@@ -37,3 +37,4 @@ resource "google_compute_firewall" "externalport-27017" {
 
   source_ranges           = var.mongoserver_instance_access_cidrs
 }
+

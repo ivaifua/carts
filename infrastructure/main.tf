@@ -55,11 +55,11 @@ resource "google_compute_instance" "mongoserver" {
 
 # javaserver_startup_script_template = file("${path.module}/templates/javaserver_startup_script.sh.tpl")
 
-resource "null_resource" "wait_for_javaserver_configuration" {
-  provisioner "local-exec" {
-    command = "${path.module}/scripts/wait-for-javaserver.sh ${var.project_id} ${var.javaserver_instance_zone} ${var.javaserver_instance_name}"
-  }
+#resource "null_resource" "wait_for_javaserver_configuration" {
+ # provisioner "local-exec" {
+ #   command = "${path.module}/scripts/wait-for-javaserver.sh ${var.project_id} ${var.javaserver_instance_zone} ${var.javaserver_instance_name}"
+ # }
 
-  depends_on = [google_compute_instance.mongoserver]
-}
+ # depends_on = [google_compute_instance.mongoserver]
+#}
 

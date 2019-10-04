@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-            choice(name: 'TERRAFORM_TASK', choices:'plan\napply\ndestroy', description: "Choose the task" )
+            choice(name: 'Terraform', choices:'plan\napply\ndestroy', description: "Choose the task" )
     }
   
     stages {
@@ -29,7 +29,7 @@ pipeline {
                         sh 'terraform init' 
                     }
                     
-                    switch(TERRAFORM_TASK) {
+                    switch(Terraform) {
                         case "apply":
                             sh 'terraform plan -out=plan'
                             sh 'terraform apply plan'

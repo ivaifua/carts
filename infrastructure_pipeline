@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                git url: 'https://github.com/marikifua/DEMOFIRST.git'
+                git url: 'https://github.com/ivaifua/carts.git'
             }
         }
         stage('Set Terraform path') {

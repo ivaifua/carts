@@ -9,6 +9,11 @@ variable "region" {
   default     = "europe-west3"
 }
 
+variable "network_name" {
+  description = "The name to assign to the network VPS"
+  default     = "servers-network"
+}
+
 variable "javaserver_instance_name" {
   description = "The name to assign to the javaserver VM"
   default     = "javaserver"

@@ -19,6 +19,10 @@ resource "google_compute_instance" "javaserver" {
     }
   }
 
+  resource "google_compute_network" "vpc_network" {
+  name = "servers-network"
+}
+  
   network_interface {
     subnetwork         = var.instance_subnetwork
     subnetwork_project = var.project_id

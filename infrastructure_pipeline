@@ -54,12 +54,12 @@ pipeline {
             parameters: [
                 choice(
                 name: 'Provision',
-                choices:"Apply\nPlan\nDestroy",
+                choices:"Apply\nDestroy",
                 description: "Choose what you whant to do")
             ]  
       }
-    
-    }}
+    }
+    }
       
     stage('approval') {
     steps {    
@@ -68,14 +68,12 @@ pipeline {
                         sh 'terraform plan -out=plan'
                         sh 'terraform apply plan'
    
-                    } else if (ChooseProv == "Plan") {
-                        sh 'terraform plan'
-
                     } else if (ChooseProv == "Destroy") {
                         sh 'terraform destroy -auto-approve'
                     }
                     
-              }  }     
+              }      
+    }
     }
     }   
     }

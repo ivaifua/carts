@@ -36,12 +36,12 @@ variable "javaserver_instance_zone" {
 
 variable "javaserver_instance_network" {
   description = "The GCP network to deploy the javaserver VM in"
-  default     = "default"
+  default     = "servers-network"
 }
 
 variable "instance_subnetwork" {
   description = "The GCP subnetwork to deploy the javaserver VM in"
-  default     = "default"
+  default     = "servers-network"
 }
 
 variable "javaserver_instance_tags" {
@@ -75,7 +75,7 @@ variable "mongoserver_instance_tags" {
 
 variable "mongoserver_instance_network" {
   description = "The GCP network to deploy the javaserver VM in"
-  default     = "default"
+  default     = "servers-network"
 }
 
 variable "mongoserver_instance_access_cidrs" {

@@ -80,7 +80,7 @@ variable "javaserver_instance_network" {
 }
 
 variable "mongoserver_instance_network" {
-  description = "The network to deploy the javaserver VM in"
+  description = "The network to deploy the mongoserver VM in"
   default     = "default"
 }
 

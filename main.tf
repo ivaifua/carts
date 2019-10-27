@@ -27,6 +27,7 @@ resource "google_compute_instance" "javaserver" {
     access_config {
     }
   }
+  
 }
 
 
@@ -52,6 +53,7 @@ resource "google_compute_instance" "mongoserver" {
     access_config {
     }
   }
+
 }
 
 

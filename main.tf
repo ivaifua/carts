@@ -5,7 +5,7 @@ provider "google" {
 
 resource "google_compute_network" "servers-network" {
    project      = var.project_id
-   name = var.instance_network
+   name = var.project_network
 }
  
 resource "google_compute_instance" "javaserver" {
@@ -24,7 +24,7 @@ resource "google_compute_instance" "javaserver" {
 
 
   network_interface {
-    network            = var.instance_network
+    network            = var.project_network
     subnetwork_project = var.project_id
     access_config {
     }
@@ -48,7 +48,7 @@ resource "google_compute_instance" "mongoserver" {
   }
 
   network_interface {
-    network            = var.instance_network
+    network            = var.project_network
     subnetwork_project = var.project_id
 
     access_config {

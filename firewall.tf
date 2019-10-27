@@ -13,7 +13,7 @@ resource "google_compute_firewall" "externalport-8081" {
 resource "google_compute_firewall" "externalport-443" {
   name    = "${var.javaserver_instance_name}-external-tcp-443"
   project = var.project_id
-  network = "${var.project_network_name}"
+  network = var.javaserver_instance_network
   allow {
     protocol = "tcp"
     ports    = ["443"]

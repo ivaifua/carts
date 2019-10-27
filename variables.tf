@@ -34,11 +34,6 @@ variable "javaserver_instance_zone" {
   default     = "europe-west3-c"
 }
 
-variable "instance_subnetwork" {
-  description = "The GCP subnetwork to deploy the javaserver VM in"
-  default     = "servers-network"
-}
-
 variable "javaserver_instance_tags" {
   type        = list(string)
   description = "Tags to assign to the javaserver VM"
@@ -78,35 +73,7 @@ variable "mongoserver_instance_zone" {
   description = "The zone to deploy the javaserver VM in"
   default     = "europe-west3-c"
 }
-variable "mongoserver_instance_network" {
-  description = "The GCP network to deploy the javaserver VM in"
+variable "project_network" {
+  description = "The GCP network used in project"
   default     = "servers-network"
-}
-variable "javaserver_instance_network" {
-  description = "The GCP network to deploy the javaserver VM in"
-  default     = "servers-network"
-}
-variable "instance_network" {
-  description = "The GCP network to deploy the javaserver VM in"
-  default     = "servers-network"
-}
-
-variable "subnetwork-ip_cidr_range" {
-  description = "The GCP network to deploy the javaserver VM in"
-  default     = "10.2.0.0/16"
-}
-
-variable "subnetwork-region" {
-  description = "The GCP network to deploy the javaserver VM in"
-  default     = "europe-west3"
-}
-
-variable "subnetwork-range_name" {
-  description = "The GCP network to deploy the javaserver VM in"
-  default     = "europe-west3"
-}
-
-variable "subnetwork-secondary_ip_cidr_range" {
-  description = "The GCP network to deploy the javaserver VM in"
-  default     = "192.168.10.0/24"
 }

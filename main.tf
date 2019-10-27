@@ -26,10 +26,6 @@ resource "google_compute_instance" "javaserver" {
     }
   }
   
-  depends_on = [
-    google_compute_network= var.instance_network,
-  ]
-  
 }
 
 
@@ -54,10 +50,6 @@ resource "google_compute_instance" "mongoserver" {
     access_config {
     }
   }
-   depends_on = [
-    google_compute_network= var.instance_network,
-  ]
-  
 
 }
 

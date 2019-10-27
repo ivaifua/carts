@@ -98,12 +98,12 @@ variable "subnetwork-ip_cidr_range" {
 
 variable "subnetwork-region" {
   description = "The GCP network to deploy the javaserver VM in"
-  default     = "europe-west3-c"
+  default     = "europe-west3"
 }
 
 variable "subnetwork-range_name" {
   description = "The GCP network to deploy the javaserver VM in"
-  default     = "europe-west3-c"
+  default     = "europe-west3"
 }
 
 variable "subnetwork-secondary_ip_cidr_range" {

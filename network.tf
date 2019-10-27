@@ -10,7 +10,7 @@ resource "google_compute_subnetwork" "servers-subnetwork" {
    region        = var.subnetwork-region
    secondary_ip_range {
      range_name    = var.subnetwork-range_name
-     ip_cidr_range = var.subnetwork-ip_cidr_range
+     ip_cidr_range = var.subnetwork-secondary_ip_cidr_range
   }
  }
 

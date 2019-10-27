@@ -9,11 +9,6 @@ variable "region" {
   default     = "europe-west3"
 }
 
-variable "network_name" {
-  description = "The name to assign to the network VPS"
-  default     = "servers-network"
-}
-
 variable "javaserver_instance_name" {
   description = "The name to assign to the javaserver VM"
   default     = "javaserver"
@@ -37,11 +32,6 @@ variable "mongoserver_boot_disk_source_image" {
 variable "javaserver_instance_zone" {
   description = "The zone to deploy the javaserver VM in"
   default     = "europe-west3-c"
-}
-
-variable "javaserver_instance_network" {
-  description = "The GCP network to deploy the javaserver VM in"
-  default     = "servers-network"
 }
 
 variable "instance_subnetwork" {
@@ -76,11 +66,6 @@ variable "mongoserver_instance_tags" {
   type        = list(string)
   description = "Tags to assign to the javaserver VM"
   default     = ["http-server","https-server","externalport-27017"]
-}
-
-variable "mongoserver_instance_network" {
-  description = "The GCP network to deploy the javaserver VM in"
-  default     = "servers-network"
 }
 
 variable "mongoserver_instance_access_cidrs" {

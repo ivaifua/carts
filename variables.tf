@@ -90,3 +90,23 @@ variable "instance_network" {
   description = "The GCP network to deploy the javaserver VM in"
   default     = "servers-network"
 }
+
+variable "subnetwork-ip_cidr_range" {
+  description = "The GCP network to deploy the javaserver VM in"
+  default     = "10.2.0.0/16"
+}
+
+variable "subnetwork-region" {
+  description = "The GCP network to deploy the javaserver VM in"
+  default     = "europe-west3-c"
+}
+
+variable "subnetwork-range_name" {
+  description = "The GCP network to deploy the javaserver VM in"
+  default     = "europe-west3-c"
+}
+
+variable "subnetwork-ip_cidr_range" {
+  description = "The GCP network to deploy the javaserver VM in"
+  default     = "192.168.10.0/24"
+}

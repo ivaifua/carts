@@ -80,11 +80,11 @@ variable "mongoserver_instance_zone" {
 }
 variable "mongoserver_instance_network" {
   description = "The GCP network to deploy the javaserver VM in"
-  default     = "var.instance_subnetwork"
+  default     = "servers-network"
 }
 variable "javaserver_instance_network" {
   description = "The GCP network to deploy the javaserver VM in"
-  default     = "var.instance_subnetwork"
+  default     = "servers-network"
 }
 variable "instance_network" {
   description = "The GCP network to deploy the javaserver VM in"

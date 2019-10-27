@@ -86,3 +86,7 @@ variable "javaserver_instance_network" {
   description = "The GCP network to deploy the javaserver VM in"
   default     = "var.instance_subnetwork"
 }
+variable "instance_network" {
+  description = "The GCP network to deploy the javaserver VM in"
+  default     = "servers-network"
+}

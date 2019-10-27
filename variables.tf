@@ -73,7 +73,7 @@ variable "mongoserver_instance_zone" {
   description = "The zone to deploy the javaserver VM in"
   default     = "europe-west3-c"
 }
-variable "project_network" {
+variable "project_network_name" {
   description = "The GCP network used in project"
   default     = "servers-network"
 }

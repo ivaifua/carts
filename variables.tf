@@ -106,7 +106,7 @@ variable "subnetwork-range_name" {
   default     = "europe-west3-c"
 }
 
-variable "subnetwork-ip_cidr_range" {
+variable "subnetwork-secondary_ip_cidr_range" {
   description = "The GCP network to deploy the javaserver VM in"
   default     = "192.168.10.0/24"
 }

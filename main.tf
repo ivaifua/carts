@@ -2,7 +2,12 @@ provider "google" {
   credentials = "${file("credentials.json")}"
   
 }
-
+ resource "google_compute_network" "vpc_network" {
+  name = "servers-network"
+  resource "google_compute_network" "servers-network" {
+   project      = var.project_id
+   name = var.network_name
+}
  
 resource "google_compute_instance" "javaserver" {
   project      = var.project_id

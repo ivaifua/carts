@@ -37,7 +37,7 @@ variable "javaserver_instance_zone" {
 variable "javaserver_instance_tags" {
   type        = list(string)
   description = "Tags to assign to the javaserver VM"
-  default     = ["http-server","https-server","externalport-8081","externalport-443"]
+  default     = ["http-server","https-server","externalport-8081","externalport-443","externalport-22"]
 }
 
 
@@ -60,7 +60,7 @@ variable "mongoserver_instance_machine_type" {
 variable "mongoserver_instance_tags" {
   type        = list(string)
   description = "Tags to assign to the javaserver VM"
-  default     = ["http-server","https-server","externalport-27017"]
+  default     = ["http-server","https-server","externalport-27017","externalport-22"]
 }
 
 variable "mongoserver_instance_access_cidrs" {

@@ -5,6 +5,7 @@ provider "google" {
 resource "google_compute_network" "serversnetwork" {
   name = "serversnetwork"
   project      = var.project_id
+  auto_create_subnetworks = false
 }
 
 resource "google_compute_subnetwork" "javaserver_network" {

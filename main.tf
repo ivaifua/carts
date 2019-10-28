@@ -8,7 +8,7 @@ resource "google_compute_network" "default" {
 
 resource "google_compute_subnetwork" "default" {
   name          = var.javaserver_instance_network
-  ip_cidr_range = "10.0.0.0/20"
+  ip_cidr_range = "10.156.0.0/20"
   region        = var.region
   network       = "${google_compute_network.default.self_link}"
 }

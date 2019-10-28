@@ -6,7 +6,7 @@ resource "google_compute_network" "serversnetwork" {
   name = "serversnetwork"
   project      = var.project_id
   auto_create_subnetworks = false
-  subnetworks_self_links =  "${google_compute_subnetwork.javaserver_network.self_link}", "${google_compute_subnetwork.mongoserver_network.self_link}" 
+  subnetworks_self_links =  "javaserver_network", "mongoserver_network"
 }
 
 resource "google_compute_subnetwork" "javaserver_network" {

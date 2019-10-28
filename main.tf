@@ -3,31 +3,42 @@ provider "google" {
   
  }
 resource "google_compute_network" "serversnetwork" {
-  name = var.netName
+  name = "serversnetwork"
   project      = var.project_id
-
-
+  auto_create_subnetworks = false
 }
 
+resource "google_compute_subnetwork" "javaserver_network" {
+  name          = var.javaserver_instance_network
+  project      = var.project_id
+  ip_cidr_range = "255.255.240.0/20"
+  region        = var.region
+  network       = "${google_compute_network.serversnetwork.self_link}"
+}
+resource "google_compute_subnetwork" "mongoserver_network" {
+  name          = var.mongoserver_instance_network
+  project      = var.project_id
+  ip_cidr_range = "255.255.240.0/20"
+  region        = var.region
+ network       = "${google_compute_network.serversnetwork.self_link}"
+}
+ resource "google_compute_address" "javaserver_internal" {
+  name         = var.javaserver_inctance_internalname
+  project      = var.project_id
+  subnetwork   = "${google_compute_subnetwork.javaserver_network.self_link}"
+  address_type = "INTERNAL"
+  address      = var.javaserver_inctance_internalip
+  region       = var.region
+}
 
-
-# resource "google_compute_address" "javaserver_internal" {
-#  name         = var.javaserver_inctance_internalname
-#  project      = var.project_id
-#  subnetwork   = "${google_compute_subnetwork.serversubnetwork.self_link}"
-#  address_type = "INTERNAL"
-#  address      = var.javaserver_inctance_internalip
-#  region       = var.region
-#}
-
-#resource "google_compute_address" "mongoserver_internal" {
-#  name         = var.mongoserver_inctance_internalname
-#  project      = var.project_id
-#  subnetwork   = "${google_compute_subnetwork.serversubnetwork.self_link}"
-#  address_type = "INTERNAL"
-#  address      = var.mongoserver_inctance_internalip
-#  region       = var.region
-#}
+resource "google_compute_address" "mongoserver_internal" {
+  name         = var.mongoserver_inctance_internalname
+  project      = var.project_id
+  subnetwork   = "${google_compute_subnetwork.mongoserver_network.self_link}"
+  address_type = "INTERNAL"
+  address      = var.mongoserver_inctance_internalip
+  region       = var.region
+}
 
 resource "google_compute_instance" "javaserver" {
   project      = var.project_id
@@ -45,8 +56,8 @@ resource "google_compute_instance" "javaserver" {
 
 
   network_interface {
-    network       = "${google_compute_network.serversnetwork.self_link}"
-    
+    subnetwork           = "${google_compute_subnetwork.javaserver_network.self_link}"
+    subnetwork_project = var.project_id
 
   access_config {
         nat_ip = "${google_compute_address.javaserver_internal.address}"
@@ -75,8 +86,8 @@ resource "google_compute_instance" "mongoserver" {
   }
 
   network_interface {
-     network       = "${google_compute_network.serversnetwork.self_link}"
-   
+    subnetwork            = "${google_compute_subnetwork.mongoserver_network.self_link}"
+    subnetwork_project = var.project_id
 
     access_config {
       nat_ip = "${google_compute_address.mongoserver_internal.address}"
@@ -87,14 +98,3 @@ resource "google_compute_instance" "mongoserver" {
   }
   
 }
-
-
-# javaserver_startup_script_template = file("${path.module}/templates/javaserver_startup_script.sh.tpl")
-
-#resource "null_resource" "wait_for_javaserver_configuration" {
- # provisioner "local-exec" {
- #   command = "${path.module}/scripts/wait-for-javaserver.sh ${var.project_id} ${var.javaserver_instance_zone} ${var.javaserver_instance_name}"
- # }
-
- # depends_on = [google_compute_instance.mongoserver]
-#}

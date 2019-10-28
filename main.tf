@@ -11,14 +11,14 @@ resource "google_compute_network" "serversnetwork" {
 resource "google_compute_subnetwork" "javaserver_network" {
   name          = var.javaserver_instance_network
   project      = var.project_id
-  ip_cidr_range = "255.255.240.0/20"
+  ip_cidr_range = "10.0.0.0/9"
   region        = var.region
   network       = "${google_compute_network.serversnetwork.self_link}"
 }
 resource "google_compute_subnetwork" "mongoserver_network" {
   name          = var.mongoserver_instance_network
   project      = var.project_id
-  ip_cidr_range = "255.255.240.0/20"
+  ip_cidr_range = "10.0.0.0/9"
   region        = var.region
  network       = "${google_compute_network.serversnetwork.self_link}"
 }

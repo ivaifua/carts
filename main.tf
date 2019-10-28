@@ -5,6 +5,7 @@ provider "google" {
 
  resource "google_compute_address" "javaserver_internal" {
   name         = var.javaserver_inctance_internalname
+  project      = var.project_id
   subnetwork   = var.javaserver_instance_network
   address_type = "INTERNAL"
   address      = var.javaserver_inctance_internalip
@@ -13,6 +14,7 @@ provider "google" {
 
 resource "google_compute_address" "mongoserver_internal" {
   name         = var.mongoserver_inctance_internalname
+  project      = var.project_id
   subnetwork   = var.mongoserver_instance_network
   address_type = "INTERNAL"
   address      = var.mongoserver_inctance_internalip

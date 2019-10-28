@@ -73,19 +73,14 @@ variable "mongoserver_instance_zone" {
   default     = "europe-west3-c"
 }
 
-variable "mongoserver_instance_network" {
+variable "serversnetwork" {
   description = "The network to deploy the mongoserver VM in"
-  default     = "mongoservernetwork"
-}
-
-variable "javaserver_instance_network" {
-  description = "The network to deploy the javaserver VM in"
-  default     = "javaservernetwork"
-}
-
-variable "instance_network_name" {
-  description = "The network to deploy the javaserver VM in"
   default     = "serversnetwork"
+}
+
+variable "prodservers_network" {
+  description = "The network to deploy the javaserver VM in"
+  default     = "prodserversnetwork"
 }
 
 variable ssh_user {

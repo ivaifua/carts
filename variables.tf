@@ -1,4 +1,3 @@
-
 variable "project_id" {
   description = "The project ID to deploy to"
   default     = "silicon-dialect-245108"
@@ -40,6 +39,13 @@ variable "javaserver_instance_tags" {
   default     = ["http-server","https-server","externalport-8081","externalport-443","externalport-22"]
 }
 
+
+variable "javaserver_instance_access_cidrs" {
+  type        = list(string)
+  description = "CIDRs to allow to access javaserver over HTTP(s)"
+  default     = ["0.0.0.0/0"]
+}
+
 variable "mongoserver_instance_name" {
   description = "The name to assign to the javaserver VM"
   default     = "mongoserver"
@@ -56,12 +62,28 @@ variable "mongoserver_instance_tags" {
   default     = ["http-server","https-server","externalport-27017","externalport-22"]
 }
 
+variable "mongoserver_instance_access_cidrs" {
+  type        = list(string)
+  description = "CIDRs to allow to access javaserver over HTTP(s)"
+  default     = ["0.0.0.0/0"]
+}
+
 variable "mongoserver_instance_zone" {
   description = "The zone to deploy the javaserver VM in"
   default     = "europe-west3-c"
 }
 
-variable "netName" {
+variable "mongoserver_instance_network" {
+  description = "The network to deploy the mongoserver VM in"
+  default     = "mongoservernetwork"
+}
+
+variable "javaserver_instance_network" {
+  description = "The network to deploy the javaserver VM in"
+  default     = "javaservernetwork"
+}
+
+variable "instance_network_name" {
   description = "The network to deploy the javaserver VM in"
   default     = "serversnetwork"
 }
@@ -89,15 +111,4 @@ variable ssh_user {
 variable "public_key_path" {
   description = "public key for user Taras"
   default     = "/var/lib/jenkins/.ssh/id_rsa.pub"
-}
-
-variable "javaserver_instance_access_cidrs" {
-  type        = list(string)
-  description = "CIDRs to allow to access javaserver over HTTP(s)"
-  default     = ["0.0.0.0/0"]
-}
-variable "mongoserver_instance_access_cidrs" {
-  type        = list(string)
-  description = "CIDRs to allow to access mongoserver over HTTP(s)"
-  default     = ["0.0.0.0/0"]
 }

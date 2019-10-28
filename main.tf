@@ -22,23 +22,6 @@ resource "google_compute_subnetwork" "mongoserver_network" {
   region        = var.region
  network       = "${google_compute_network.serversnetwork.self_link}"
 }
- resource "google_compute_address" "javaserver_internal" {
-  name         = var.javaserver_inctance_internalname
-  project      = var.project_id
-  subnetwork   = "${google_compute_subnetwork.javaserver_network.self_link}"
-  address_type = "INTERNAL"
-  address      = var.javaserver_inctance_internalip
-  region       = var.region
-}
-
-resource "google_compute_address" "mongoserver_internal" {
-  name         = var.mongoserver_inctance_internalname
-  project      = var.project_id
-  subnetwork   = "${google_compute_subnetwork.mongoserver_network.self_link}"
-  address_type = "INTERNAL"
-  address      = var.mongoserver_inctance_internalip
-  region       = var.region
-}
 
 resource "google_compute_instance" "javaserver" {
   project      = var.project_id

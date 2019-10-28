@@ -103,5 +103,5 @@ variable ssh_user {
 
 variable "public_key_path" {
   description = "public key for user Taras"
-  default     = "/home/jenkins/.ssh/id_rsa.pub"
+  default     = "/var/lib/jenkins/.ssh/id_rsa.pub"
 }

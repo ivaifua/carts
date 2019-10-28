@@ -38,7 +38,7 @@ resource "google_compute_firewall" "externalport-27017" {
 resource "google_compute_firewall" "externalport-22" {
   name    = "external-tcp-22"
   project = var.project_id
-  network = var.instance_network_name
+  network = "${google_compute_network.serversnetwork.self_link}"
   allow {
     protocol = "tcp"
     ports    = ["22"]

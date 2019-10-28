@@ -39,7 +39,7 @@ resource "google_compute_instance" "javaserver" {
     subnetwork_project = var.project_id
 
   access_config {
-        nat_ip = var.javaserver_inctance_staticname
+        nat_ip = "${google_compute_address.javaserver_internal.address}"
     }
   
     } 
@@ -69,7 +69,7 @@ resource "google_compute_instance" "mongoserver" {
     subnetwork_project = var.project_id
 
     access_config {
-      nat_ip = var.mongoserver_inctance_internaladress
+      nat_ip = "${google_compute_address.mongoserver_internal.address}"
     }
   }
    metadata = {

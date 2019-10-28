@@ -3,21 +3,21 @@ provider "google" {
   
  }
 resource "google_compute_network" "serversnetwork" {
-  name = "servers${var.netName}"
+  name = "${var.netName}"
   project      = var.project_id
  # auto_create_subnetworks = false
 
 }
 
 resource "google_compute_subnetwork" "javaserver_network" {
-  name          = "java${var.netName}"
+  name          = "${var.netName}"
   project      = var.project_id
   ip_cidr_range = "10.128.0.0/9"
   region        = var.region
   network       = "${google_compute_network.serversnetwork.self_link}"
 }
 resource "google_compute_subnetwork" "mongoserver_network" {
-  name          = "mongo${var.netName}"
+  name          = "${var.netName}"
   project      = var.project_id
   ip_cidr_range = "10.128.0.0/9"
   region        = var.region

@@ -98,7 +98,7 @@ variable "prodservers_ip_cidr_range" {
 } 
 variable "javaserver_instance_network_ip" {
   description = ""
-  default     = "10.128.0.3"
+  default     = "10.128.0.2"
 } 
 variable "javaserver_instance_network_tier" {
   description = ""

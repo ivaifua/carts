@@ -3,7 +3,7 @@ provider "google" {
   
  }
 resource "google_compute_network" "serversnetwork" {
-  name = "servers"${var.netName}""
+  name = "servers${var.netName}""
   project      = var.project_id
 
 }

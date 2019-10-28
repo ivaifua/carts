@@ -43,7 +43,6 @@ resource "google_compute_instance" "javaserver" {
     subnetwork_project = var.project_id
 
   access_config {
-        nat_ip = "${google_compute_address.javaserver_internal.address}"
     }
   
     } 
@@ -73,8 +72,7 @@ resource "google_compute_instance" "mongoserver" {
     subnetwork_project = var.project_id
 
     access_config {
-      nat_ip = "${google_compute_address.mongoserver_internal.address}"
-    }
+ }
   }
    metadata = {
      ssh-keys = "${var.ssh_user}:${file(var.public_key_path)}"

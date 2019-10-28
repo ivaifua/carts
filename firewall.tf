@@ -38,7 +38,7 @@ resource "google_compute_firewall" "externalport-27017" {
 resource "google_compute_firewall" "externalport-22" {
   name    = "externalport-22"
   project = var.project_id
-  network = var.javaserver_instance_network, var.mongoserver_instance_network
+  network = var.javaserver_instance_network
   allow {
     protocol = "tcp"
     ports    = ["22"]

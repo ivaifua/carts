@@ -88,11 +88,19 @@ variable "instance_network_name" {
   description = "The network to deploy the javaserver VM in"
   default     = "default"
 }
-variable "javaserver_inctance_staticname" {
+variable "javaserver_inctance_internalname" {
   description = ""
   default     = "javaserver"
 }
-variable "mongoserver_inctance_staticname" {
+variable "mongoserver_inctance_internalip" {
+  description = ""
+  default     = "10.156.0.32"
+}
+variable "javaserver_inctance_internalip" {
+  description = ""
+  default     = "10.156.0.31"
+}
+variable "mongoserver_inctance_internalname" {
   description = ""
   default     = "mongoserver"
 }

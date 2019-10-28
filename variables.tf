@@ -84,7 +84,7 @@ variable "javaserver_instance_network" {
   default     = "default"
 }
 
-variable "var.instance_network_name" {
+variable "instance_network_name" {
   description = "The network to deploy the javaserver VM in"
   default     = "default"
 }

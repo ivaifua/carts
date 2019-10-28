@@ -88,3 +88,20 @@ variable "instance_network_name" {
   description = "The network to deploy the javaserver VM in"
   default     = "default"
 }
+variable "javaserver_inctance_staticname" {
+  description = ""
+  default     = "javaserver"
+}
+variable "mongoserver_inctance_staticname" {
+  description = ""
+  default     = "mongoserver"
+}
+variable ssh_user {
+  description = "Name of ssh user for connect to host"
+  default     = "jenkins"
+ }
+
+variable "public_key_path" {
+  description = "public key for user Taras"
+  default     = "/home/jenkins/.ssh/id_rsa.pub"
+}

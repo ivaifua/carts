@@ -26,7 +26,7 @@ resource "google_compute_instance" "javaserver" {
         nat_ip = var.javaserver_inctance_staticname
     }
   
-  
+    } 
   metadata = {
      ssh-keys = "${var.ssh_user}:${file(var.public_key_path)}"
   }

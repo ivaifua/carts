@@ -89,6 +89,10 @@ variable ssh_user {
  }
 
 variable "public_key_path" {
-  description = "public key for user Taras"
+  description = "public key for user Jenkins"
   default     = "/var/lib/jenkins/.ssh/id_rsa.pub"
 }
+variable "prodservers_ip_cidr_range" {
+  description = ""
+  default     = "10.128.0.0/20"
+} 

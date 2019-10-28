@@ -1,7 +1,7 @@
 resource "google_compute_firewall" "externalport-8081" {
   name    = "external-tcp-8081"
   project = var.project_id
-  subnetwork = "${google_compute_subnetwork.javaserver_network.self_link}"
+  network = "${google_compute_network.serversnetwork.self_link}"
   allow {
     protocol = "tcp"
     ports    = ["8081"]
@@ -13,7 +13,7 @@ resource "google_compute_firewall" "externalport-8081" {
 resource "google_compute_firewall" "externalport-443" {
   name    = "external-tcp-443"
   project = var.project_id
-  subnetwork = "${google_compute_subnetwork.javaserver_network.self_link}"
+  network = "${google_compute_network.serversnetwork.self_link}"
   allow {
     protocol = "tcp"
     ports    = ["443"]
@@ -25,7 +25,7 @@ resource "google_compute_firewall" "externalport-443" {
 resource "google_compute_firewall" "externalport-27017" {
   name    = "external-tcp-27017"
   project = var.project_id
-  subnetwork = "${google_compute_subnetwork.mongoserver_network.self_link}"
+  network = "${google_compute_network.serversnetwork.self_link}"
   allow {
     protocol = "tcp"
     ports    = ["27017"]

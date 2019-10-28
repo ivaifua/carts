@@ -21,8 +21,7 @@ resource "google_compute_instance" "javaserver" {
   name         = var.javaserver_instance_name
   machine_type = var.javaserver_instance_machine_type
   zone         = var.javaserver_instance_zone
-  id  = var.javaserver_instance_name
-
+  
   tags = var.javaserver_instance_tags
 
   boot_disk {
@@ -54,8 +53,7 @@ resource "google_compute_instance" "mongoserver" {
   name         = var.mongoserver_instance_name
   machine_type = var.mongoserver_instance_machine_type
   zone         = var.mongoserver_instance_zone
-  id  = var.mongoserver_instance_name
-  
+    
   tags = var.mongoserver_instance_tags
 
     boot_disk {

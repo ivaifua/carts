@@ -21,12 +21,11 @@ resource "google_compute_instance" "javaserver" {
   network_interface {
     subnetwork           = var.javaserver_instance_network
     subnetwork_project = var.project_id
-    access_config {
-    }
-  }
+
   access_config {
         nat_ip = var.javaserver_inctance_staticname
-  }
+    }
+  
   
   metadata = {
      ssh-keys = "${var.ssh_user}:${file(var.public_key_path)}"

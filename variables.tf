@@ -73,12 +73,12 @@ variable "mongoserver_instance_zone" {
   default     = "europe-west3-c"
 }
 
-variable "serversnetwork" {
+variable "serversnetwork_name" {
   description = "The network to deploy the mongoserver VM in"
   default     = "serversnetwork"
 }
 
-variable "prodservers_network" {
+variable "prodservers_network_name" {
   description = "The network to deploy the javaserver VM in"
   default     = "prodserversnetwork"
 }

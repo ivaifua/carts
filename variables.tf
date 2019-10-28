@@ -87,22 +87,7 @@ variable "instance_network_name" {
   description = "The network to deploy the javaserver VM in"
   default     = "serversnetwork"
 }
-variable "javaserver_inctance_internalname" {
-  description = ""
-  default     = "javaserver"
-}
-variable "mongoserver_inctance_internalip" {
-  description = ""
-  default     = "10.128.0.1"
-}
-variable "javaserver_inctance_internalip" {
-  description = ""
-  default     = "10.128.0.2"
-}
-variable "mongoserver_inctance_internalname" {
-  description = ""
-  default     = "mongoserver"
-}
+
 variable ssh_user {
   description = "Name of ssh user for connect to host"
   default     = "jenkins"

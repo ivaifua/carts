@@ -63,7 +63,7 @@ variable "mongoserver_instance_zone" {
 
 variable "netName" {
   description = "The network to deploy the javaserver VM in"
-  default     = "network"
+  default     = "serversnetwork"
 }
 variable "javaserver_inctance_internalname" {
   description = ""

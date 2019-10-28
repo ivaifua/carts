@@ -2,20 +2,26 @@ provider "google" {
   credentials = "${file("credentials.json")}"
   
  }
-resource "google_compute_network" "default" {
+resource "google_compute_network" "servers_network" {
   name = "servers_network"
 }
 
-resource "google_compute_subnetwork" "default" {
+resource "google_compute_subnetwork" "javaserver_network" {
   name          = var.javaserver_instance_network
   ip_cidr_range = "10.156.0.0/20"
   region        = var.region
-  network       = "${google_compute_network.default.self_link}"
+  network       = "${google_compute_network.servers_network.self_link}"
+}
+resource "google_compute_subnetwork" "mongoserver_network" {
+  name          = var.mongoserver_instance_network
+  ip_cidr_range = "10.156.0.0/20"
+  region        = var.region
+  network       = "${google_compute_network.servers_network.self_link}"
 }
  resource "google_compute_address" "javaserver_internal" {
   name         = var.javaserver_inctance_internalname
   project      = var.project_id
-  subnetwork   = "${google_compute_subnetwork.default.self_link}"
+  subnetwork   = "${google_compute_subnetwork.javaserver_network.self_link}"
   address_type = "INTERNAL"
   address      = var.javaserver_inctance_internalip
   region       = var.region
@@ -24,7 +30,7 @@ resource "google_compute_subnetwork" "default" {
 resource "google_compute_address" "mongoserver_internal" {
   name         = var.mongoserver_inctance_internalname
   project      = var.project_id
-  subnetwork   = var.mongoserver_instance_network
+  subnetwork   = "${google_compute_subnetwork.mongoserver_network.self_link}"
   address_type = "INTERNAL"
   address      = var.mongoserver_inctance_internalip
   region       = var.region

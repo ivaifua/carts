@@ -3,7 +3,7 @@ provider "google" {
   
  }
 resource "google_compute_network" "default" {
-  name = "servers-network"
+  name = "servers_network"
 }
 
 resource "google_compute_subnetwork" "default" {

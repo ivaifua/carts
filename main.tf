@@ -7,7 +7,7 @@ resource "google_compute_network" "default" {
 }
 
 resource "google_compute_subnetwork" "default" {
-  name          = var.mongoserver_instance_network
+  name          = "${var.mongoserver_instance_network"
   ip_cidr_range = "10.0.0.0/20"
   region        = var.region
   network       = "${google_compute_network.default.self_link}"

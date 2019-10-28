@@ -93,11 +93,11 @@ variable "javaserver_inctance_internalname" {
 }
 variable "mongoserver_inctance_internalip" {
   description = ""
-  default     = "10.156.0.32"
+  default     = "10.128.0.1"
 }
 variable "javaserver_inctance_internalip" {
   description = ""
-  default     = "10.156.0.31"
+  default     = "10.128.0.2"
 }
 variable "mongoserver_inctance_internalname" {
   description = ""

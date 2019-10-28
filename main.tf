@@ -8,19 +8,12 @@ resource "google_compute_network" "serversnetwork" {
   auto_create_subnetworks = false
 }
 
-resource "google_compute_subnetwork" "javaserver_network" {
+resource "google_compute_subnetwork" "prodserver_network" {
   name          = var.javaserver_instance_network
   project      = var.project_id
   ip_cidr_range = "10.128.0.0/20"
   region        = var.region
   network       = "${google_compute_network.serversnetwork.self_link}"
-}
-resource "google_compute_subnetwork" "mongoserver_network" {
-  name          = var.mongoserver_instance_network
-  project      = var.project_id
-  ip_cidr_range = "10.128.0.0/20"
-  region        = var.region
- network       = "${google_compute_network.serversnetwork.self_link}"
 }
 
 resource "google_compute_instance" "javaserver" {
@@ -39,7 +32,7 @@ resource "google_compute_instance" "javaserver" {
 
 
   network_interface {
-    subnetwork           = "${google_compute_subnetwork.javaserver_network.self_link}"
+    subnetwork           = "${google_compute_subnetwork.prodserver_network.self_link}"
     subnetwork_project = var.project_id
 
   access_config {
@@ -68,7 +61,7 @@ resource "google_compute_instance" "mongoserver" {
   }
 
   network_interface {
-    subnetwork            = "${google_compute_subnetwork.mongoserver_network.self_link}"
+    subnetwork            = "${google_compute_subnetwork.prodserver_network.self_link}"
     subnetwork_project = var.project_id
 
     access_config {

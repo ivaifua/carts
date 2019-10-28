@@ -3,16 +3,24 @@ provider "google" {
   
  }
 resource "google_compute_network" "serversnetwork" {
-  name = "serversnetwork"
+  name = var.netName
   project      = var.project_id
- # auto_create_subnetworks = false
+  autoCreateSubnetworks = false
 
+}
+
+resource "google_compute_subnetwork" "serversubnetwork" {
+  name          = var.netName
+  project      = var.project_id
+  ip_cidr_range = "10.156.0.0/20"
+  region        = var.region
+ network       = "${google_compute_network.serversnetwork.self_link}"
 }
 
  resource "google_compute_address" "javaserver_internal" {
   name         = var.javaserver_inctance_internalname
   project      = var.project_id
-  network   = "${google_compute_network.serversnetwork.self_link}"
+  subnetwork   = "${google_compute_subnetwork.serversubnetwork.self_link}"
   address_type = "INTERNAL"
   address      = var.javaserver_inctance_internalip
   region       = var.region
@@ -21,7 +29,7 @@ resource "google_compute_network" "serversnetwork" {
 resource "google_compute_address" "mongoserver_internal" {
   name         = var.mongoserver_inctance_internalname
   project      = var.project_id
-  subnetwork   = "${google_compute_network.serversnetwork.self_link}"
+  subnetwork   = "${google_compute_subnetwork.serversubnetwork.self_link}"
   address_type = "INTERNAL"
   address      = var.mongoserver_inctance_internalip
   region       = var.region
@@ -44,7 +52,8 @@ resource "google_compute_instance" "javaserver" {
 
   network_interface {
     network       = "${google_compute_network.serversnetwork.self_link}"
-    
+    subnetwork           = "${google_compute_subnetwork.serversubnetwork.self_link}"
+    subnetwork_project = var.project_id
 
   access_config {
         nat_ip = "${google_compute_address.javaserver_internal.address}"
@@ -74,7 +83,8 @@ resource "google_compute_instance" "mongoserver" {
 
   network_interface {
      network       = "${google_compute_network.serversnetwork.self_link}"
-    
+    subnetwork            = "${google_compute_subnetwork.serversubnetwork.self_link}"
+    subnetwork_project = var.project_id
 
     access_config {
       nat_ip = "${google_compute_address.mongoserver_internal.address}"
@@ -96,4 +106,3 @@ resource "google_compute_instance" "mongoserver" {
 
  # depends_on = [google_compute_instance.mongoserver]
 #}
-

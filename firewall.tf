@@ -7,7 +7,6 @@ resource "google_compute_firewall" "externalport-8081" {
     ports    = ["8081"]
   }
 
-  source_ranges           = var.javaserver_instance_access_cidrs
 }
 
 resource "google_compute_firewall" "externalport-443" {
@@ -19,7 +18,6 @@ resource "google_compute_firewall" "externalport-443" {
     ports    = ["443"]
   }
 
-  source_ranges           = var.javaserver_instance_access_cidrs
 }
 
 resource "google_compute_firewall" "externalport-27017" {
@@ -31,7 +29,6 @@ resource "google_compute_firewall" "externalport-27017" {
     ports    = ["27017"]
   }
 
-  source_ranges           = var.mongoserver_instance_access_cidrs
 }
 
 resource "google_compute_firewall" "externalport-22" {

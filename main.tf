@@ -3,7 +3,7 @@ provider "google" {
   
  }
 resource "google_compute_network" "serversnetwork" {
-  name = "serversnetwork_name"
+  name = var.serversnetwork_name
   project      = var.project_id
   auto_create_subnetworks = false
 }
@@ -11,7 +11,7 @@ resource "google_compute_network" "serversnetwork" {
 resource "google_compute_subnetwork" "prodservers_network" {
   name          = var.prodservers_network_name
   project      = var.project_id
-  ip_cidr_range = "10.128.0.0/20"
+  ip_cidr_range = var.prodservers_ip_cidr_range
   region        = var.region
   network       = "${google_compute_network.serversnetwork.self_link}"
 }

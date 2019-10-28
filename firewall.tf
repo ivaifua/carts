@@ -46,4 +46,3 @@ resource "google_compute_firewall" "externalport-22" {
   source_tags = ["externalport-22","ansibleport"]
 }
 
-}

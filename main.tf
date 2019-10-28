@@ -2,7 +2,16 @@ provider "google" {
   credentials = "${file("credentials.json")}"
   
  }
+resource "google_compute_network" "default" {
+  name = "servers-network"
+}
 
+resource "google_compute_subnetwork" "default" {
+  name          = var.mongoserver_instance_network
+  ip_cidr_range = "10.0.0.0/20"
+  region        = var.region
+  network       = "${google_compute_network.default.self_link}"
+}
  resource "google_compute_address" "javaserver_internal" {
   name         = var.javaserver_inctance_internalname
   project      = var.project_id

@@ -5,7 +5,7 @@ provider "google" {
 resource "google_compute_network" "serversnetwork" {
   name = "servers${var.netName}"
   project      = var.project_id
-  autoCreateSubnetworks = false
+  auto_create_subnetworks = false
 
 }
 

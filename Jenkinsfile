@@ -25,7 +25,6 @@ stage('Deploy approval'){
 }
 node {
   stage('Deploy') {
-     sh 'whoami'
      sh 'ssh jenkins@javamachine sudo systemctl stop carts'
      sh 'scp -oStrictHostKeyChecking=no target/carts.jar jenkins@javamachine:/home/jenkins/carts/'
      sh 'ssh jenkins@javamachine sudo systemctl start carts'

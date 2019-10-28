@@ -34,7 +34,7 @@ source_ranges           = var.mongoserver_instance_access_cidrs
 resource "google_compute_firewall" "externalport-22" {
   name    = "external-tcp-22"
   project = var.project_id
-  network = "${google_compute_network.serversnetwork.self_link}"
+  network = "${google_compute_network.serversnetwork.google_compute_subnetwork.name.self_link}"
   allow {
     protocol = "tcp"
     ports    = ["22"]

@@ -19,6 +19,7 @@ resource "google_compute_instance" "javaserver" {
 
 
   network_interface {
+    network  = var.instance_network_name
     subnetwork           = var.javaserver_instance_network
     subnetwork_project = var.project_id
     access_config {
@@ -43,6 +44,7 @@ resource "google_compute_instance" "mongoserver" {
   }
 
   network_interface {
+     network  = var.instance_network_name
     subnetwork            = var.mongoserver_instance_network
     subnetwork_project = var.project_id
 

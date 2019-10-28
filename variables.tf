@@ -100,3 +100,14 @@ variable "public_key_path" {
   description = "public key for user Taras"
   default     = "/var/lib/jenkins/.ssh/id_rsa.pub"
 }
+
+variable "javaserver_instance_access_cidrs" {
+  type        = list(string)
+  description = "CIDRs to allow to access javaserver over HTTP(s)"
+  default     = ["0.0.0.0/0"]
+}
+variable "mongoserver_instance_access_cidrs" {
+  type        = list(string)
+  description = "CIDRs to allow to access mongoserver over HTTP(s)"
+  default     = ["0.0.0.0/0"]
+}

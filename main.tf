@@ -56,7 +56,7 @@ resource "google_compute_instance" "javaserver" {
 
 
   network_interface {
-    subnetwork           = var.javaserver_instance_network
+    subnetwork           = "${google_compute_subnetwork.javaserver_network.self_link}"
     subnetwork_project = var.project_id
 
   access_config {
@@ -86,7 +86,7 @@ resource "google_compute_instance" "mongoserver" {
   }
 
   network_interface {
-    subnetwork            = var.mongoserver_instance_network
+    subnetwork            = "${google_compute_subnetwork.mongoserver_network.self_link}"
     subnetwork_project = var.project_id
 
     access_config {

@@ -76,12 +76,12 @@ variable "mongoserver_instance_zone" {
 
 variable "mongoserver_instance_network" {
   description = "The network to deploy the mongoserver VM in"
-  default     = "mongoserver_network"
+  default     = "mongoservernetwork"
 }
 
 variable "javaserver_instance_network" {
   description = "The network to deploy the javaserver VM in"
-  default     = "javaserver_network"
+  default     = "javaservernetwork"
 }
 
 variable "instance_network_name" {

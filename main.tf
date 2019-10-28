@@ -3,13 +3,13 @@ provider "google" {
   
  }
 resource "google_compute_network" "serversnetwork" {
-  name = "serversnetwork"
+  name = "serversnetwork_name"
   project      = var.project_id
   auto_create_subnetworks = false
 }
 
-resource "google_compute_subnetwork" "prodserver_network" {
-  name          = var.javaserver_instance_network
+resource "google_compute_subnetwork" "prodservers_network" {
+  name          = var.prodservers_network_name
   project      = var.project_id
   ip_cidr_range = "10.128.0.0/20"
   region        = var.region
@@ -32,7 +32,7 @@ resource "google_compute_instance" "javaserver" {
 
 
   network_interface {
-    subnetwork           = "${google_compute_subnetwork.prodserver_network.self_link}"
+    subnetwork           = "${google_compute_subnetwork.prodservers_network.self_link}"
     subnetwork_project = var.project_id
 
   access_config {
@@ -61,7 +61,7 @@ resource "google_compute_instance" "mongoserver" {
   }
 
   network_interface {
-    subnetwork            = "${google_compute_subnetwork.prodserver_network.self_link}"
+    subnetwork            = "${google_compute_subnetwork.prodservers_network.self_link}"
     subnetwork_project = var.project_id
 
     access_config {

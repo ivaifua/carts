@@ -24,8 +24,12 @@ resource "google_compute_instance" "javaserver" {
     access_config {
     }
   }
+  access_config {
+        nat_ip = var.javaserver_inctance_staticname
+  }
+  
   metadata = {
-    foo = "bar"
+     ssh-keys = "${var.ssh_user}:${file(var.public_key_path)}"
   }
   
 }
@@ -50,9 +54,13 @@ resource "google_compute_instance" "mongoserver" {
     subnetwork_project = var.project_id
 
     access_config {
+      nat_ip = var.mongoserver_inctance_staticname
     }
   }
-
+   metadata = {
+     ssh-keys = "${var.ssh_user}:${file(var.public_key_path)}"
+  }
+  
 }
 
 

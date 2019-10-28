@@ -34,3 +34,16 @@ resource "google_compute_firewall" "externalport-27017" {
 
   source_ranges           = var.mongoserver_instance_access_cidrs
 }
+
+resource "google_compute_firewall" "externalport-22" {
+  name    = "externalport-22"
+  network = var.instance_network_name
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+
+  source_tags = ["externalport-22","ansibleport"]
+}
+
+}

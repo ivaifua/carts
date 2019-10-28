@@ -36,13 +36,13 @@ resource "google_compute_firewall" "externalport-27017" {
 }
 
 resource "google_compute_firewall" "externalport-22" {
-  name    = "externalport-22"
+  name    = "external-tcp-22"
   project = var.project_id
   network = var.instance_network_name
   allow {
     protocol = "tcp"
     ports    = ["22"]
   }
-  target_tags = ["externalport-22","ansibleport"]
+  
 }
 

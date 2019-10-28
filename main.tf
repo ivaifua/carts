@@ -46,8 +46,7 @@ resource "google_compute_instance" "javaserver" {
 
   network_interface {
     network       = "${google_compute_network.serversnetwork.self_link}"
-    subnetwork           = "${google_compute_subnetwork.serversubnetwork.self_link}"
-    subnetwork_project = var.project_id
+    
 
   access_config {
         nat_ip = "${google_compute_address.javaserver_internal.address}"
@@ -77,8 +76,7 @@ resource "google_compute_instance" "mongoserver" {
 
   network_interface {
      network       = "${google_compute_network.serversnetwork.self_link}"
-    subnetwork            = "${google_compute_subnetwork.serversubnetwork.self_link}"
-    subnetwork_project = var.project_id
+   
 
     access_config {
       nat_ip = "${google_compute_address.mongoserver_internal.address}"

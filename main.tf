@@ -2,7 +2,23 @@ provider "google" {
   credentials = "${file("credentials.json")}"
   
  }
- 
+
+ resource "google_compute_address" "javaserver_internal" {
+  name         = var.javaserver_inctance_internalname
+  subnetwork   = var.javaserver_instance_network
+  address_type = "INTERNAL"
+  address      = var.javaserver_inctance_internalip
+  region       = var.region
+}
+
+resource "google_compute_address" "mongoserver_internal" {
+  name         = var.mongoserver_inctance_internalname
+  subnetwork   = var.mongoserver_instance_network
+  address_type = "INTERNAL"
+  address      = var.mongoserver_inctance_internalip
+  region       = var.region
+}
+
 resource "google_compute_instance" "javaserver" {
   project      = var.project_id
   name         = var.javaserver_instance_name
@@ -53,7 +69,7 @@ resource "google_compute_instance" "mongoserver" {
     subnetwork_project = var.project_id
 
     access_config {
-      nat_ip = var.mongoserver_inctance_staticname
+      nat_ip = var.mongoserver_inctance_internaladress
     }
   }
    metadata = {

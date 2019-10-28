@@ -2,8 +2,8 @@ provider "google" {
   credentials = "${file("credentials.json")}"
   
  }
-resource "google_compute_network" "servers_network" {
-  name = "servers_network"
+resource "google_compute_network" "serversnetwork" {
+  name = "serversnetwork"
   project      = var.project_id
 }
 

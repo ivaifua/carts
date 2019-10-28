@@ -96,3 +96,19 @@ variable "prodservers_ip_cidr_range" {
   description = ""
   default     = "10.128.0.0/20"
 } 
+variable "javaserver_instance_network_ip" {
+  description = ""
+  default     = "10.128.0.3"
+} 
+variable "javaserver_instance_network_tier" {
+  description = ""
+  default     = "STANDARD"
+} 
+variable "mongoserver_instance_network_ip" {
+  description = ""
+  default     = "10.128.0.3"
+} 
+variable "mongoserver_instance_network_tier" {
+  description = ""
+  default     = "STANDARD"
+} 

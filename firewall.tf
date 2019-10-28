@@ -21,7 +21,7 @@ resource "google_compute_firewall" "externalport-443" {
 }
 
 resource "google_compute_firewall" "externalport-27017" {
-  name    = "mongoserver-${var.mongoserver_instance_name}-external-tcp-27017"
+  name    = "${var.mongoserver_instance_name}-external-tcp-27017"
   project = var.project_id
   network = "${google_compute_subnetwork.mongoserver_network.self_link}"
   allow {

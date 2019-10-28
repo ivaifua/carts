@@ -21,6 +21,7 @@ resource "google_compute_instance" "javaserver" {
   name         = var.javaserver_instance_name
   machine_type = var.javaserver_instance_machine_type
   zone         = var.javaserver_instance_zone
+  id           = var.javaserver_instance_name
 
   tags = var.javaserver_instance_tags
 
@@ -34,9 +35,11 @@ resource "google_compute_instance" "javaserver" {
   network_interface {
     subnetwork           = "${google_compute_subnetwork.prodservers_network.self_link}"
     subnetwork_project = var.project_id
+    network_ip         = var.javaserver_instance_network_ip
 
-  access_config {
-    }
+    access_config {
+      network_tier     = var.javaserver_instance_network_tier
+ }
   
     } 
   metadata = {
@@ -51,7 +54,8 @@ resource "google_compute_instance" "mongoserver" {
   name         = var.mongoserver_instance_name
   machine_type = var.mongoserver_instance_machine_type
   zone         = var.mongoserver_instance_zone
-
+  id           = var.mongoserver_instance_name
+  
   tags = var.mongoserver_instance_tags
 
     boot_disk {
@@ -61,10 +65,12 @@ resource "google_compute_instance" "mongoserver" {
   }
 
   network_interface {
-    subnetwork            = "${google_compute_subnetwork.prodservers_network.self_link}"
+    subnetwork         = "${google_compute_subnetwork.prodservers_network.self_link}"
     subnetwork_project = var.project_id
+    network_ip         = var.mongoserver_instance_network_ip
 
     access_config {
+      network_tier     = var.mongoserver_instance_network_tier
  }
   }
    metadata = {

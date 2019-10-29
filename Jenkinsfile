@@ -2,7 +2,7 @@ node {
   def mvnHome
   stage('Preparation') { // for display purposes
      // Get some code from a GitHub repository
-     https://github.com/ivaifua/carts.git
+     git url: 'https://github.com/ivaifua/carts.git'
      // Get the Maven tool.
      // ** NOTE: This 'M3' Maven tool must be configured
      // **       in the global configuration.

@@ -8,7 +8,7 @@ node {
      // **       in the global configuration.
      mvnHome = tool 'M3'
     sh 'ansible --version'
-    sh 'ansible -i --list'
+    sh 'ansible -i -m ping all'
   }
   stage('Build') {
      // Run the maven build

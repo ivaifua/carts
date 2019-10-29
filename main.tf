@@ -38,6 +38,7 @@ resource "google_compute_instance" "javaserver" {
 
     access_config {
       network_tier     = var.javaserver_instance_network_tier
+      nat_ip           = var.nat_ip
  }
   
     } 
@@ -69,6 +70,7 @@ resource "google_compute_instance" "mongoserver" {
 
     access_config {
       network_tier     = var.mongoserver_instance_network_tier
+      nat_ip           = var.nat_ip
  }
   }
    metadata = {

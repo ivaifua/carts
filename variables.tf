@@ -112,3 +112,8 @@ variable "mongoserver_instance_network_tier" {
   description = ""
   default     = "STANDARD"
 } 
+
+variable "nat_ip" {
+  description = "The instance's IP"
+  default     = ""
+}

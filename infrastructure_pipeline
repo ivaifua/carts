@@ -55,7 +55,7 @@ pipeline {
                 choice(
                 name: 'Provision',
                 choices:"Apply\nDestroy",
-                description: "Choose what you whant to do")
+                description: "Choose what you want to do")
             ]  
       }
     }

@@ -85,7 +85,7 @@ variable "prodservers_network_name" {
 
 variable ssh_user {
   description = "Name of ssh user for connect to host"
-  default     = "ivaifua"
+  default     = "jenkins"
  }
 
 variable "public_key_path" {

@@ -6,7 +6,9 @@ resource "google_compute_firewall" "externalport-8081" {
     protocol = "tcp"
     ports    = ["8081"]
   }
-
+allow {
+    protocol = "icmp"
+  }
   source_ranges           = var.javaserver_instance_access_cidrs
 }
 
@@ -18,7 +20,9 @@ resource "google_compute_firewall" "externalport-443" {
     protocol = "tcp"
     ports    = ["443"]
   }
-
+allow {
+    protocol = "icmp"
+  }
   source_ranges           = var.javaserver_instance_access_cidrs
 }
 
@@ -30,7 +34,9 @@ resource "google_compute_firewall" "externalport-27017" {
     protocol = "tcp"
     ports    = ["27017"]
   }
-
+allow {
+    protocol = "icmp"
+  }
   source_ranges           = var.mongoserver_instance_access_cidrs
 }
 
@@ -42,5 +48,7 @@ resource "google_compute_firewall" "externalport-22" {
     protocol = "tcp"
     ports    = ["22"]
   }
-  
+  allow {
+    protocol = "icmp"
+  }
 }

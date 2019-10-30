@@ -90,11 +90,11 @@ variable ssh_user {
 
 variable "public_key_path" {
   description = "public key for user Jenkins"
-  default     = "/ivaifua/.ssh/jenkins.pub"
+  default     = "home/ivaifua/.ssh/jenkins.pub"
 }
 variable "private_key_path" {
 description = "Path to the private key used for ssh access"
-default     = "/ivaifua/.ssh/jenkins"
+default     = "home/ivaifua/.ssh/jenkins"
 }
 
 variable "prodservers_ip_cidr_range" {

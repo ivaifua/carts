@@ -1,3 +1,4 @@
+---
 [servers]
 javaserver  javaserver_host=10.128.0.2    
 mongoserver  mongoserver_host=10.128.0.3  

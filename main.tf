@@ -40,8 +40,9 @@ resource "google_compute_instance" "javaserver" {
       network_tier     = var.javaserver_instance_network_tier
       nat_ip           = var.nat_ip
  }
+    }
   
-   provisioner "remote-exec" {
+  provisioner "remote-exec" {
     connection {
       type        = "ssh"
       user        = "${var.ssh_user}"
@@ -53,7 +54,7 @@ resource "google_compute_instance" "javaserver" {
      # "touch /tmp/temp.txt",
     ]
   }
-    } 
+     
   metadata = {
      ssh-keys = "${var.ssh_user}:${file(var.public_key_path)}"
   }

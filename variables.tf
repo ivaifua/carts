@@ -85,16 +85,16 @@ variable "prodservers_network_name" {
 
 variable ssh_user {
   description = "Name of ssh user for connect to host"
-  default     = "jenkins"
+  default     = "ivaifua"
  }
 
 variable "public_key_path" {
   description = "public key for user Jenkins"
-  default     = "/var/lib/jenkins/.ssh/id_rsa.pub"
+  default     = "/var/lib/jenkins/.ssh/jenkins.pub"
 }
 variable "private_key_path" {
 description = "Path to the private key used for ssh access"
-default     = "/var/lib/jenkins/.ssh/id_rsa"
+default     = "/var/lib/jenkins/.ssh/jenkins"
 }
 
 variable "prodservers_ip_cidr_range" {

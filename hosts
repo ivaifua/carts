@@ -4,7 +4,7 @@ javaserver  javaserver_ssh_host=10.128.0.2
 [dbservers]
 mongoserver  mongoserver_ssh_host=10.128.0.3  
 
-[prodservers:childrens]
+[prodservers]
 webservers
 dbservers
  

@@ -90,11 +90,11 @@ variable ssh_user {
 
 variable "public_key_path" {
   description = "public key for user Jenkins"
-  default     = "/var/lib/jenkins/.ssh/jenkins.pub"
+  default     = "/var/lib/jenkins/.ssh/id_rsa.pub"
 }
 variable "private_key_path" {
 description = "Path to the private key used for ssh access"
-default     = "/var/lib/jenkins/.ssh/jenkins"
+default     = "/var/lib/jenkins/.ssh/id_rsa"
 }
 
 variable "prodservers_ip_cidr_range" {

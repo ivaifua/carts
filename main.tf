@@ -41,12 +41,25 @@ resource "google_compute_instance" "javaserver" {
       nat_ip           = var.nat_ip
  }
   
+   provisioner "remote-exec" {
+    connection {
+      type        = "ssh"
+      user        = "${var.ssh_user}"
+      timeout     = "500s"
+      private_key = "${file(var.private_key_path)"
+    }
+
+    inline = [
+     # "touch /tmp/temp.txt",
+    ]
+  }
     } 
   metadata = {
      ssh-keys = "${var.ssh_user}:${file(var.public_key_path)}"
   }
   
 }
+
 
 
 resource "google_compute_instance" "mongoserver" {

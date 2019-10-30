@@ -89,5 +89,16 @@ resource "google_compute_instance" "mongoserver" {
    metadata = {
      ssh-keys = "${var.ssh_user}:${file(var.public_key_path)}"
   }
-  
+  provisioner "remote-exec" {
+    connection {
+      type        = "ssh"
+      user        = "${var.ssh_user}"
+      timeout     = "500s"
+      private_key = "${file(var.private_key_path)"
+    }
+
+    inline = [
+     # "touch /tmp/temp.txt",
+    ]
+  } 
 }

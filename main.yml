@@ -1,5 +1,5 @@
 ---
-    - hosts: webservers
+    - hosts: javaserver
       remote_user: ivaifua
       become: yes
       become_method: sudo

@@ -5,8 +5,8 @@ javaserver  javaserver_ssh_host=10.128.0.2
 mongoserver  mongoserver_ssh_host=10.128.0.3  
 
 [prodservers:childrens]
-[webservers]
-[dbservers]
+webservers
+dbservers
  
 [prodservers:vars]
 ansible_ssh_user=ivaifua  ansible_ssh_private_key_file=jenkins

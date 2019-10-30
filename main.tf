@@ -47,7 +47,7 @@ resource "google_compute_instance" "javaserver" {
       type        = "ssh"
       user        = "${var.ssh_user}"
       timeout     = "500s"
-      private_key = "${file(var.private_key_path)"
+      private_key = "${file(var.private_key_path)}"
     }
 
     inline = [
@@ -95,7 +95,7 @@ resource "google_compute_instance" "mongoserver" {
       type        = "ssh"
       user        = "${var.ssh_user}"
       timeout     = "500s"
-      private_key = "${file(var.private_key_path)"
+      private_key = "${file(var.private_key_path)}"
     }
 
     inline = [

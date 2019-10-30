@@ -5,4 +5,4 @@
 10.128.0.3  
  
 [prodservers:vars]
-ansible_user=ivaifua  ansible_ssh_private_key_file=jenkins
+ansible_user=jenkins  ansible_ssh_private_key_file=id_rsa

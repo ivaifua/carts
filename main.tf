@@ -44,7 +44,7 @@ resource "google_compute_instance" "javaserver" {
   
   provisioner "remote-exec" {
     connection {
-      host        = "${google_compute_instance.pd.network_interface.0.access_config.0.nat_ip}"
+      host        = "${google_compute_instance.javaserver.network_interface.0.access_config.0.nat_ip}"
       type        = "ssh"
       user        = "${var.ssh_user}"
       timeout     = "500s"
@@ -93,7 +93,7 @@ resource "google_compute_instance" "mongoserver" {
   }
   provisioner "remote-exec" {
     connection {
-      host        = "${google_compute_instance.pd.network_interface.0.access_config.0.nat_ip}"
+      host        = "${google_compute_instance.mongoserver.network_interface.0.access_config.0.nat_ip}"
       type        = "ssh"
       user        = "${var.ssh_user}"
       timeout     = "500s"

@@ -52,7 +52,7 @@ resource "google_compute_instance" "javaserver" {
     }
 
     inline = [
-      "touch /javaserverkeys.sh",
+    #  "touch /javaserverkeys.sh",
     ]
   }
      

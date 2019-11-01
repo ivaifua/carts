@@ -5,15 +5,15 @@
   become_method: sudo
   tasks:
 
-  - name: upgrade all packages
-    yum:
-    name: '*'
-    state: latest
+   - name: upgrade all packages
+     yum:
+     name: '*'
+     state: latest
    
-  - name: Install pip
-    yum: name=python-pip state=present
-       
-  - name: install docker-py
-    pip: name=docker-py
-       
+   - name: Install pip
+     yum: name=python-pip state=present
+        
+   - name: install docker-py
+     pip: name=docker-py
+        
   

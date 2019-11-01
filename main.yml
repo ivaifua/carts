@@ -4,6 +4,9 @@
   become: yes
   become_method: sudo
   tasks:
+   - name: Update yum
+     yum: name=update
+     
    - name: Install pip
      yum: name=python-pip state=present
        

@@ -7,8 +7,8 @@
 
    - name: upgrade all packages
      yum:
-     name: '*'
-     state: latest
+      name: '*'
+      state: latest
    
    - name: Install pip
      yum: name=python-pip state=present

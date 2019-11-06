@@ -51,8 +51,9 @@ resource "google_compute_firewall" "externalport-icmp" {
   allow {
     protocol = "icmp"
   }
+}
 
-}resource "google_compute_firewall" "externalport-internal" {
+resource "google_compute_firewall" "externalport-internal" {
   name    = "externalport-internal"
   project = var.project_id
   network = "${google_compute_network.serversnetwork.self_link}"

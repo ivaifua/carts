@@ -44,3 +44,27 @@ resource "google_compute_firewall" "externalport-22" {
   }
 
 }
+resource "google_compute_firewall" "externalport-icmp" {
+  name    = "external-tcp-icmp"
+  project = var.project_id
+  network = "${google_compute_network.serversnetwork.self_link}"
+  allow {
+    protocol = "icmp"
+  }
+
+}resource "google_compute_firewall" "externalport-internal" {
+  name    = "externalport-internal"
+  project = var.project_id
+  network = "${google_compute_network.serversnetwork.self_link}"
+ allow {
+    protocol = "tcp"
+    ports    = ["0-65535"]
+  }
+   allow {
+    protocol = "udp"
+    ports    = ["0-65535"]
+  }
+    allow {
+    protocol = "icmp"
+  }
+}

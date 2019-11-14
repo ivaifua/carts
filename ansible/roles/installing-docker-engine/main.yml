@@ -1,0 +1,45 @@
+---
+ - name: Installing dockers engine on hosts
+   hosts: all
+   remote_user: jenkins
+   become: yes
+   become_method: sudo
+   tasks:
+     - name: Classify hosts depending on their OS distribution
+       group_by:
+         key: os_{{ ansible_distribution }}
+
+ 
+ - hosts: os_CentOS
+   remote_user: jenkins
+   become: yes
+   become_method: sudo
+   gather_facts: False
+   tasks:
+     - name: upgrade all packages
+       yum:
+         name: '*'
+         state: latest
+   
+     - name: Install pip
+       yum: name=python-pip state=present
+        
+     - name: install docker-py
+       pip: name=docker-py
+
+ - hosts: os_Debian
+   remote_user: jenkins
+   become: yes
+   become_method: sudo
+   gather_facts: False
+   tasks:
+     - name: upgrade all packages
+       apt:
+         name: '*'
+         state: latest
+   
+     - name: Install pip
+       apt: name=python-pip state=present
+        
+     - name: install docker-py
+       pip: name=docker-py

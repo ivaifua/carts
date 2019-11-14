@@ -13,30 +13,30 @@
  - hosts: os_CentOS
    gather_facts: False
    tasks:
-   - name: upgrade all packages CentOS
-     yum:
-     name: '*'
-     state: latest
+     - name: upgrade all packages
+       yum:
+       name: '*'
+       state: latest
    
-   - name: Install pip CentOS
-     yum: name=python-pip state=present
+     - name: Install pip
+       yum: name=python-pip state=present
         
-   - name: install docker-py CentOS
-     pip: name=docker-py
+     - name: install docker-py
+       pip: name=docker-py
 
  - hosts: os_Debian
    gather_facts: False
    tasks:
-   - name: upgrade all packages Debian
-     apt:
-     name: '*'
-     state: latest
+     - name: upgrade all packages
+       apt:
+       name: '*'
+       state: latest
    
-   - name: Install pip Debian
-     apt: name=python-pip state=present
+     - name: Install pip
+       apt: name=python-pip state=present
         
-   - name: install docker-py Debian
-     pip: name=docker-py
+     - name: install docker-py
+       pip: name=docker-py
 
 
 

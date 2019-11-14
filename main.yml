@@ -15,8 +15,8 @@
    tasks:
      - name: upgrade all packages
        yum:
-       name: '*'
-       state: latest
+         name: '*'
+         state: latest
    
      - name: Install pip
        yum: name=python-pip state=present
@@ -29,8 +29,8 @@
    tasks:
      - name: upgrade all packages
        apt:
-       name: '*'
-       state: latest
+         name: '*'
+         state: latest
    
      - name: Install pip
        apt: name=python-pip state=present

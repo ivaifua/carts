@@ -3,7 +3,8 @@
    hosts: all
    remote_user: jenkins
    become: yes
-   become_method: sudotasks:
+   become_method: sudo
+   tasks:
      - name: Classify hosts depending on their OS distribution
        group_by:
          key: os_{{ ansible_facts['distribution'] }}

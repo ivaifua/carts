@@ -11,6 +11,9 @@
 
  
  - hosts: os_CentOS
+   remote_user: jenkins
+   become: yes
+   become_method: sudo
    gather_facts: False
    tasks:
      - name: upgrade all packages
@@ -25,6 +28,9 @@
        pip: name=docker-py
 
  - hosts: os_Debian
+   remote_user: jenkins
+   become: yes
+   become_method: sudo
    gather_facts: False
    tasks:
      - name: upgrade all packages

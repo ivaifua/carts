@@ -28,7 +28,7 @@
    gather_facts: False
    tasks:
    - name: upgrade all packages
-     apt
+     apt:
      name: '*'
      state: latest
    

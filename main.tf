@@ -105,3 +105,9 @@ resource "google_compute_instance" "mongoserver" {
     ]
   } 
 }
+
+resource "google_compute_network_peering" "vpc-servers-jenkins" {
+  name = "vpc-servers-jenkins"
+  network = "${google_compute_network.jenkinsnetwork.self_link}"
+  peer_network = "${google_compute_network.serversnetwork.self_link}"
+}

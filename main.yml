@@ -41,10 +41,10 @@
          - containerd.io   
      
      - name: Start Docker service
-      service:
-        name: docker
-        state: started
-        enabled: yes
+       service:
+         name: docker
+         state: started
+         enabled: yes
         
      - name: Add user jenkins to user group
        user:

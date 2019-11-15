@@ -52,12 +52,42 @@
        apt:
          name: '*'
          state: latest
-   
-      - name: Install docker
-       apt: 
-         name: docker-ce
+     
+     - name: Install packages to allow apt to use a repository over HTTPS
+       apt: name={{ item }} state=present update_cache=yes
+       with_items:
+         - apt-transport-https
+         - ca-certificates 
+         - curl 
+         - gnupg2 
+         - software-properties-common
+     
+     - name: Add Docker repository key
+       apt_key: 
+          url:  https://download.docker.com/linux/debian/gpg 
+          state: present
+          validate_certs: no
+       register: add_repository_key
+       ignore_errors: true
+     
+     # the above can fail..?? So, took this from:
+     # https://github.com/angstwad/docker.ubuntu/blob/master/tasks/main.yml#L20
+     - name: Alternative | Add Docker repository key
+       shell: curl -sSL  https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+       when: add_repository_key|failed
+     
+     - name: Add Docker repository
+       apt_repository: 
+         repo: deb [arch={{ docker_apt_arch }}] https://download.docker.com/linux/{{ ansible_distribution|lower }} {{ ansible_distribution_release }} {{ docker_apt_release_channel }}
          update_cache: yes
          state: present
+       
+     - name: Install docker
+       apt: name={{ item }} state=present update_cache=yes
+       with_items:
+           - docker-ce 
+           - docker-ce-cli 
+           - containerd.io
      
      - name: Add user jenkins to user group
        user:

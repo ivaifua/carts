@@ -20,12 +20,27 @@
        yum:
          name: '*'
          state: latest
-   
+      
+     - name: Install docker
+       yum: 
+         name: docker-ce
+         update_cache: yes
+         state: present
+     
+     - name: Add user jenkins to user group
+       user:
+         name: jenkins 
+         groups: docker
+         append: yes
+     
      - name: Install pip
-       yum: name=python-pip state=present
+       yum: 
+         name: python-pip 
+         state: present
         
      - name: install docker-py
-       pip: name=docker-py
+       pip: 
+         name: docker-py
 
  - hosts: os_Debian
    remote_user: jenkins
@@ -38,8 +53,23 @@
          name: '*'
          state: latest
    
+      - name: Install docker
+       apt: 
+         name: docker-ce
+         update_cache: yes
+         state: present
+     
+     - name: Add user jenkins to user group
+       user:
+         name: jenkins 
+         groups: docker
+         append: yes
+     
      - name: Install pip
-       apt: name=python-pip state=present
+       apt: 
+         name: python-pip 
+         state: present
         
      - name: install docker-py
-       pip: name=docker-py
+       pip: 
+         name: docker-py

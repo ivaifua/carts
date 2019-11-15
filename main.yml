@@ -20,13 +20,32 @@
        yum:
          name: '*'
          state: latest
-      
-     - name: Install docker
-       yum: 
-         name: docker-ce
-         update_cache: yes
-         state: present
+    
+     - name: Install packages to allow apt to use a repository over HTTPS
+       yum: name={{ item }} state=present update_cache=yes
+       with_items:
+         - yum-utils
+         - device-mapper-persistent-data 
+         - lvm2    
+        
+     - name: Add Docker repository
+       get_url:
+         url: https://download.docker.com/linux/centos/docker-ce.repo
+         dest: /etc/yum.repos.d/docer-ce.repo
      
+     - name: Install docker
+       yum: name={{ item }} state=present update_cache=yes
+       with_items:
+         - docker-ce
+         - docker-ce-cli 
+         - containerd.io   
+     
+     - name: Start Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+        
      - name: Add user jenkins to user group
        user:
          name: jenkins 

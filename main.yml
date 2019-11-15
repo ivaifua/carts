@@ -97,9 +97,9 @@
      
      # the above can fail..?? So, took this from:
      # https://github.com/angstwad/docker.ubuntu/blob/master/tasks/main.yml#L20
-     - name: Alternative | Add Docker repository key
-       shell: curl -sSL  https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-       when: add_repository_key|failed
+   #  - name: Alternative | Add Docker repository key
+   #    shell: curl -sSL  https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+    #   when: add_repository_key|failed
      
      - name: Add Docker repository
        apt_repository: 

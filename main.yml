@@ -22,23 +22,27 @@
          state: latest
     
      - name: Install packages to allow apt to use a repository over HTTPS
-       yum: name={{ item }} state=present update_cache=yes
-       with_items:
-         - yum-utils
-         - device-mapper-persistent-data 
-         - lvm2    
-        
+       yum: 
+         name:
+           - yum-utils
+           - device-mapper-persistent-data 
+           - lvm2  
+         state: present 
+         update_cache: yes
+      
      - name: Add Docker repository
        get_url:
          url: https://download.docker.com/linux/centos/docker-ce.repo
          dest: /etc/yum.repos.d/docer-ce.repo
      
      - name: Install docker
-       yum: name={{ item }} state=present update_cache=yes
-       with_items:
-         - docker-ce
-         - docker-ce-cli 
-         - containerd.io   
+       yum: 
+         name:
+           - docker-ce
+           - docker-ce-cli 
+           - containerd.io 
+         state: present 
+         update_cache: yes
      
      - name: Start Docker service
        service:
@@ -73,13 +77,15 @@
          state: latest
      
      - name: Install packages to allow apt to use a repository over HTTPS
-       apt: name={{ item }} state=present update_cache=yes
-       with_items:
-         - apt-transport-https
-         - ca-certificates 
-         - curl 
-         - gnupg2 
-         - software-properties-common
+       apt: 
+         name:
+           - apt-transport-https
+           - ca-certificates 
+           - curl 
+           - gnupg2 
+           - software-properties-common
+         state: present 
+         update_cache: yes
      
      - name: Add Docker repository key
        apt_key: 
@@ -102,11 +108,13 @@
          state: present
        
      - name: Install docker
-       apt: name={{ item }} state=present update_cache=yes
-       with_items:
+       apt:
+         name: 
            - docker-ce 
            - docker-ce-cli 
            - containerd.io
+         state: present 
+         update_cache: yes
      
      - name: Add user jenkins to user group
        user:
